@@ -121,42 +121,47 @@ namespace RaceDay_API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public string events_deleted(int id,string role)
+        public string events_deleted(int id, string role)
         {
+            if (string.IsNullOrWhiteSpace(role) ||
+                !role.Trim().Equals("Organizer", StringComparison.OrdinalIgnoreCase))
+            {
+                return "You are not an organizer, you don't have access.";
+            }
+        
             string message = "";
+        
             try
             {
                 string connection = @"Data Source=(Localdb)\ProjectModels;database=Raceday;";
-
+        
                 SqlConnection Connect = new SqlConnection(connection);
                 Connect.Open();
-                if (role != null && role.Trim().Equals("Organizer", StringComparison.OrdinalIgnoreCase))
+        
+                string query = @"Delete from event where event_id=" + id;
+        
+                SqlCommand run_query = new SqlCommand(query, Connect);
+        
+                int row = run_query.ExecuteNonQuery();
+        
+                if (row > 0)
                 {
-                     string query = @"Delete from event where event_id=" + id;
-                     SqlCommand run_query = new SqlCommand(query, Connect);
-                    
-                    int row = run_query.ExecuteNonQuery();
-                    if (row > 0)
-                    {
-                        message = "Event information has been deleted successfully...";
-                    }
-                    else
-                    {
-                        message = "Event can not be found...";
-                    }
+                    message = "Event information has been deleted successfully...";
                 }
                 else
                 {
-                    message = "You are not an organizer, you don't have access.";
+                    message = "Event can not be found...";
                 }
-
+        
                 Connect.Close();
-            } 
-            catch (Exception Error)
-            {
-                message = Error.Message;
             }
+            catch (Exception)
+            {
+                message = "You are not an organizer, you don't have access.";
+            }
+        
             return message;
         }
+
     }
 }
