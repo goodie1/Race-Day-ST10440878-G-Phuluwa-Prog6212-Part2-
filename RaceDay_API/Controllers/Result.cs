@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Timers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Runtime.InteropServices.JavaScript.JSType; 
 
 namespace RaceDay_API.Controllers
 {
