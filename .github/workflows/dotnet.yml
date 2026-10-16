@@ -22,8 +22,8 @@ jobs:
         with:
           dotnet-version: '10.0.x'
 
-      -name: Check .NET installation
-       run: dotnet --info
+      - name: Check .NET installation
+        run: dotnet --info
 
       - name: Restore dependencies
         run: dotnet restore RaceDay_API.slnx
