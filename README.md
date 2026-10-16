@@ -1,4 +1,4 @@
-<img width="1600" height="1000" alt="WhatsApp Image 2026-10-16 at 6 19 22 PM" src="https://github.com/user-attachments/assets/a3b86593-f7eb-4bf4-8866-f8e40a6d27a3" />RaceDay API
+RaceDay API
 
 Project Description
 
