@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace RaceDay_API.Controllers
+namespace RaceDay_API.Controllers 
 {
     [Route("api/[controller]")]
     [ApiController]
