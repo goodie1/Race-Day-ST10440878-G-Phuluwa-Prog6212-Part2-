@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Xml.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+ 
 namespace RaceDay_API.Controllers
 {
     [Route("api/[controller]")]
