@@ -47,6 +47,11 @@ Create table result (result_id int identity (1,1)primary key,
                      check(role in ('Participant','Organizer')));
 
 
+INSERT INTO authentication(name, surname, email, Cell_Number, role, password)
+VALUES
+    ('TestUser1', 'TestSurname1', 'testuser1@example.com', 712345601, 'Participant', 'TestPassword1'),
+    ('TestUser2', 'TestSurname2', 'testuser2@example.com', 712345602, 'Participant', 'TestPassword2'),
+    ('TestUser3', 'TestSurname3', 'testuser3@example.com', 712345603, 'Participant', 'TestPassword3');
 
 Insert into category
 values ('teenager', '5 km', 16,'Organizer'),
@@ -61,7 +66,7 @@ values('Johannesburg Marathon', '2026-11-15', '07:00', 'Marathon', 'Annual city 
 Insert into enrollment
 values (1, 1, 3, 'Participant'),
        (2, 2, 1, 'Participant'),
-       (3, 4, 2, 'Participant');
+       (3, 3, 2, 'Participant');
 
 
 select * from authentication;
