@@ -1,0 +1,28 @@
+﻿@using RaceDay_web.Models
+@model EventsModel
+@{
+	ViewData["Title"] = "Create event";
+}
+<div class="form-card">
+	<h2 class="fw-bold mb-4">Create a race event</h2>
+	<form asp-action="Create" method="post">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="row g-3">
+			@foreach (var field in new[] { "Event_Name", "Date", "Time", "Event_Type", "Location", "Race_Route", "Weather", "Event_Description" })
+			{
+				<div class="col-md-6">
+					<label class="form-label" for="@field">@field.Replace("_", " ")</label>
+					@if (field == "Event_Description")
+					{
+						<textarea class="form-control" id="@field" name="@field"></textarea>
+					}
+					else
+					{
+
+						<input class="form-control" id="@field" name="@field" type="@(field == "Date" ? "date" : "text")" />
+					}
+				</div>
+			}
+		</div><button class="btn btn-accent mt-4">Save event</button> <a asp-action="Index" class="btn btn-outline-secondary mt-4">Cancel</a>
+	</form>
+</div>

@@ -1,0 +1,63 @@
+﻿@model List<RaceDay_web.Models.CategoriesModel>
+
+@{
+    ViewData["Title"] = "Categories";
+    string role = Context.Session.GetString("Role") ?? "";
+    bool isOrganizer = role.Equals("Organizer", StringComparison.OrdinalIgnoreCase);
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <span class="eyebrow">RACEDAY</span>
+        <h1 class="fw-bold">Race categories</h1>
+    </div>
+
+    @if (isOrganizer)
+    {
+        <a class="btn btn-accent" asp-action="Create">＋ Add category</a>
+    }
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <div class="empty-state">
+        <div class="feature-icon">🎽</div>
+        <h4>No categories available</h4>
+        <p>Race categories will appear here once organisers add them.</p>
+    </div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var category in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h4 class="fw-bold">@category.Category_Type</h4>
+
+                        <p><strong>Category ID:</strong> @category.Category_Id</p>
+                        <p><strong>Distance:</strong> @category.Distance</p>
+                        <p><strong>Age:</strong> @category.Age</p>
+
+                        <a asp-action="Details"
+                           asp-route-id="@category.Category_Id"
+                           class="btn btn-outline-primary">
+                            View details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

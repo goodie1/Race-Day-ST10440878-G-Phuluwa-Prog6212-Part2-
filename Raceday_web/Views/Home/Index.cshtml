@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+}
+<section class="hero rounded-4 p-4 p-lg-5 mb-5">
+    <div class="row align-items-center">
+        <div class="col-lg-7">
+            <span class="eyebrow">YOUR RACE. YOUR PACE.</span>
+            <h1 class="display-3 fw-bold mt-3">Every finish line starts with a first step.</h1>
+            <p class="lead mt-3">Discover running events, join a race category and celebrate every personal best with RaceDay.</p>
+            <a class="btn btn-accent btn-lg me-2" asp-controller="Authentication" asp-action="Register">Get started</a>
+            <a class="btn btn-outline-light btn-lg" asp-controller="Authentication" asp-action="Login">Login</a>
+        </div>
+        <div class="col-lg-5 text-center mt-4 mt-lg-0">
+            <div class="hero-icon">🏃‍♀️</div>
+            <div class="hero-badge">READY · SET · RACE</div>
+        </div>
+    </div>
+</section>
+<div class="row g-4">
+    <div class="col-md-4"><div class="feature-card"><div class="feature-icon">🏁</div><h4>Find events</h4><p>Explore races and choose the event that suits your goals.</p></div></div>
+    <div class="col-md-4"><div class="feature-card"><div class="feature-icon">👟</div><h4>Register to run</h4><p>Choose your category and secure your place in the race.</p></div></div>
+    <div class="col-md-4"><div class="feature-card"><div class="feature-icon">🏆</div><h4>Track results</h4><p>Keep your race achievements and performance together.</p></div></div>
+</div>

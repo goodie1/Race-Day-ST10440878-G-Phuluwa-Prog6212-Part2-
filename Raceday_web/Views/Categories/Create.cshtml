@@ -1,0 +1,14 @@
+﻿@using RaceDay_web.Models
+@model CategoriesModel
+@{
+	ViewData["Title"] = "Create category";
+}
+<div class="form-card narrow">
+	<h2 class="fw-bold mb-4">Create race category</h2>
+	<form asp-action="Create" method="post">
+		<div class="mb-3"><label asp-for="Category_Type" class="form-label"></label><input asp-for="Category_Type" class="form-control" /><span asp-validation-for="Category_Type" class="text-danger"></span></div>
+		<div class="mb-3"><label asp-for="Distance" class="form-label"></label><input asp-for="Distance" class="form-control" /></div>
+		<div class="mb-3"><label asp-for="Age" class="form-label"></label><input asp-for="Age" class="form-control" /></div>
+		<button class="btn btn-accent">Save category</button>
+	</form>
+</div>

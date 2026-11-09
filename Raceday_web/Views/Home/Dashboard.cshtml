@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    var role = Context.Session.GetString("Role") ?? "Participant";
+    var isOrganizer = role.Equals("Organizer", StringComparison.OrdinalIgnoreCase)
+                   || role.Equals("Organiser", StringComparison.OrdinalIgnoreCase);
+    var isParticipant = role.Equals("Participant", StringComparison.OrdinalIgnoreCase);
+}
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+    <div><span class="eyebrow">RACEDAY OVERVIEW</span><h1 class="fw-bold">Welcome, @Context.Session.GetString("UserName")!</h1><p class="text-muted mb-0">Your @role dashboard is ready.</p></div>
+    <a class="btn btn-accent" asp-controller="Profile" asp-action="Index">Manage profile</a>
+</div>
+<div class="row g-3">
+    <div class="col-md-4"><a class="dashboard-card" asp-controller="Events" asp-action="Index"><span>📅</span><h4>Events</h4><p>Explore race events and event information.</p></a></div>
+    <div class="col-md-4"><a class="dashboard-card" asp-controller="Categories" asp-action="Index"><span>🎽</span><h4>Categories</h4><p>View race distances and age categories.</p></a></div>
+    <div class="col-md-4"><a class="dashboard-card" asp-controller="Results" asp-action="Index"><span>🏆</span><h4>Results</h4><p>View race results and performance details.</p></a></div>
+    @if (isParticipant)
+    {
+        <div class="col-md-4"><a class="dashboard-card" asp-controller="Enrollment" asp-action="Create"><span>📝</span><h4>Enter a race</h4><p>Register for an event and category.</p></a></div>
+    }
+    @if (isOrganizer)
+    {
+        <div class="col-md-4"><a class="dashboard-card" asp-controller="Events" asp-action="Create"><span>➕</span><h4>Create event</h4><p>Add a new race to RaceDay.</p></a></div>
+        <div class="col-md-4"><a class="dashboard-card" asp-controller="Categories" asp-action="Create"><span>🎯</span><h4>Create category</h4><p>Add a race category.</p></a></div>
+        <div class="col-md-4"><a class="dashboard-card" asp-controller="Results" asp-action="Create"><span>🥇</span><h4>Enter results</h4><p>Publish race performance details.</p></a></div>
+    }
+</div>

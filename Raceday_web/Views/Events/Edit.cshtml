@@ -1,0 +1,105 @@
+﻿@{
+	ViewData["Title"] = "Edit Event";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning">
+            <h3 class="text-center">Update Race Event</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Edit" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label class="form-label">Event ID</label>
+                    <input type="number"
+                           name="id"
+                           class="form-control"
+                           value="@ViewBag.Id"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Event Name</label>
+                    <input type="text"
+                           name="event_name"
+                           class="form-control"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Event Date</label>
+                    <input type="date"
+                           name="date"
+                           class="form-control"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Event Time</label>
+                    <input type="time"
+                           name="time"
+                           class="form-control"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Event Type</label>
+                    <input type="text"
+                           name="event_Type"
+                           class="form-control"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Event Description</label>
+                    <textarea name="Event_description"
+                              class="form-control"
+                              rows="3"
+                              required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Location</label>
+                    <input type="text"
+                           name="location"
+                           class="form-control"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Race Route</label>
+                    <input type="text"
+                           name="race_route"
+                           class="form-control"
+                           required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Weather</label>
+                    <input type="text"
+                           name="weather"
+                           class="form-control"
+                           required />
+                </div>
+
+                <input type="hidden" name="role" value="Organizer" />
+
+                <button type="submit"
+                        class="btn btn-warning w-100">
+                    Update Event
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Update Results";
+}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Update Race Results</h2>
+
+    <div class="card shadow-sm p-4">
+
+        <form asp-controller="Results"
+              asp-action="Edit"
+              method="post">
+
+            <input type="hidden" name="id" value="@ViewBag.Id" />
+
+            <div class="mb-3">
+                <label class="form-label">Finish Time</label>
+
+                <input type="text"
+                       name="finish_time"
+                       class="form-control"
+                       required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Race Position</label>
+
+                <input type="text"
+                       name="race_Positions"
+                       class="form-control"
+                       required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Average Pace</label>
+
+                <input type="text"
+                       name="Avg_pace"
+                       class="form-control"
+                       required />
+            </div>
+
+            <input type="hidden" name="role" value="Organizer" />
+
+            <button type="submit" class="btn btn-primary">
+                Update Results
+            </button>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>

@@ -1,0 +1,14 @@
+﻿@using RaceDay_web.Models
+@model ResultsModel
+@{
+	ViewData["Title"] = "Enter results";
+}
+<div class="form-card narrow">
+	<h2 class="fw-bold mb-4">Enter race results</h2>
+	<form asp-action="Create" method="post">
+		<div class="mb-3"><label asp-for="Finish_Time" class="form-label"></label><input asp-for="Finish_Time" class="form-control" /></div>
+		<div class="mb-3"><label asp-for="Race_Positions" class="form-label"></label><input asp-for="Race_Positions" class="form-control" /></div>
+		<div class="mb-3"><label asp-for="Avg_Pace" class="form-label"></label><input asp-for="Avg_Pace" class="form-control" /></div>
+		<button class="btn btn-accent">Save results</button>
+	</form>
+</div>

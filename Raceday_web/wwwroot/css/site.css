@@ -1,0 +1,182 @@
+:root {
+    --navy: #202b46;
+    --purple: #6c63ff;
+    --mint: #00bfa6;
+    --pale: #f5f7fc;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background: var(--pale);
+    color: #202b46;
+    min-height: 100vh;
+}
+
+.race-navbar {
+    background: var(--navy);
+    box-shadow: 0 5px 20px #17213a22;
+}
+
+.navbar-brand {
+    letter-spacing: .4px;
+    font-size: 1.35rem;
+}
+
+.btn-accent {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: white;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: .7rem 1.25rem;
+}
+
+    .btn-accent:hover {
+        background: #554be8;
+        border-color: #554be8;
+        color: white;
+    }
+
+.hero {
+    color: white;
+    background: linear-gradient(120deg,#202b46 0%,#5147b9 65%,#00a991 130%);
+    min-height: 390px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.eyebrow {
+    color: #00a991;
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero .eyebrow {
+    color: #a8fff0;
+}
+
+.hero-icon {
+    font-size: 9rem;
+    filter: drop-shadow(0 15px 15px #10172b55);
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 9px 18px;
+    border: 1px solid #ffffff66;
+    border-radius: 30px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.feature-card, .dashboard-card, .form-card, .empty-state {
+    background: white;
+    border: 1px solid #e9edf5;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 30px #26345a0b;
+}
+
+.feature-card {
+    height: 100%;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.dashboard-card {
+    display: block;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    transition: .2s;
+}
+
+    .dashboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 35px #26345a1a;
+        color: var(--purple);
+    }
+
+    .dashboard-card span {
+        font-size: 2.3rem;
+    }
+
+    .dashboard-card h4 {
+        margin-top: 12px;
+        font-weight: 800;
+    }
+
+    .dashboard-card p, .feature-card p {
+        color: #778099;
+        margin-bottom: 0;
+    }
+
+.form-card {
+    padding: 32px;
+}
+
+.narrow {
+    max-width: 520px;
+}
+
+.form-control, .form-select {
+    border-radius: 11px;
+    padding: .75rem .9rem;
+    border-color: #dfe4ef;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--purple);
+        box-shadow: 0 0 0 .2rem #6c63ff22;
+    }
+
+.profile-photo {
+    width: 145px;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #eeeaff;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 55px 25px;
+}
+
+.api-output {
+    white-space: pre-wrap;
+    text-align: left;
+    overflow-wrap: anywhere;
+    color: #46516c;
+}
+
+.footer {
+    background: var(--navy);
+    color: #c9d0e2;
+}
+
+a {
+    color: var(--purple);
+}
+
+@media(max-width:767px) {
+    .hero {
+        text-align: center;
+    }
+
+    .hero-icon {
+        font-size: 6rem;
+    }
+
+    .form-card {
+        padding: 22px;
+    }
+}

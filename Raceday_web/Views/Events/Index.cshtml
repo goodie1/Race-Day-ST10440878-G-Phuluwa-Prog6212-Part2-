@@ -1,0 +1,101 @@
+﻿@model List<RaceDay_web.Models.EventsModel>
+
+@{
+    ViewData["Title"] = "Events";
+    string role = Context.Session.GetString("Role") ?? "";
+    bool isOrganizer = role.Equals("Organizer", StringComparison.OrdinalIgnoreCase);
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <span class="eyebrow">DISCOVER</span>
+        <h1 class="fw-bold">Race events</h1>
+    </div>
+
+    @if (isOrganizer)
+    {
+        <a class="btn btn-accent" asp-action="Create">＋ Create event</a>
+    }
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <div class="empty-state">
+        <div class="feature-icon">📅</div>
+        <h4>No events available</h4>
+        <p>There are currently no race events to display.</p>
+    </div>
+}
+else
+{
+    <div class="row g-4">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm">
+
+                    <div class="card-body">
+
+                        <h4 class="fw-bold">@item.Event_Name</h4>
+
+                        <p><strong>Date:</strong> @item.Date</p>
+
+                        <p><strong>Time:</strong> @item.Time</p>
+
+                        <p><strong>Type:</strong> @item.Event_Type</p>
+
+                        <p><strong>Location:</strong> @item.Location</p>
+
+                        <p><strong>Race route:</strong> @item.Race_Route</p>
+
+                        <p><strong>Weather:</strong> @item.Weather</p>
+
+                        <p>@item.Event_Description</p>
+
+                        <a asp-action="Details"
+                           asp-route-id="@item.Event_Id"
+                           class="btn btn-outline-primary">
+                            View details
+                        </a>
+
+                        @if (isOrganizer)
+                        {
+                            <form asp-action="Delete"
+                                  method="post"
+                                  class="d-inline">
+
+                                <input type="hidden"
+                                       name="id"
+                                       value="@item.Event_Id" />
+
+                                <button type="submit"
+                                        class="btn btn-danger"
+                                        onclick="return confirm('Delete this event?')">
+                                    Delete
+                                </button>
+
+                            </form>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+}

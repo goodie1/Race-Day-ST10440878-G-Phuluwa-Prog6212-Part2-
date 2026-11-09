@@ -1,0 +1,16 @@
+﻿@using RaceDay_web.Models
+@model ProfileModel
+@{
+	ViewData["Title"] = "My profile";
+}
+<div class="form-card narrow mx-auto text-center">
+	<h2 class="fw-bold">My profile</h2>
+	<img class="profile-photo my-3" src="@(Model.ProfileImage ?? "/images/default-profile.svg")" alt="Profile picture" />
+	<p class="text-muted">@Model.Name</p>
+	<form asp-action="Upload" method="post" enctype="multipart/form-data">
+		<input asp-for="ProfilePicture" type="file" accept=".jpg,.jpeg,.png,.webp" class="form-control mb-3" />
+		<span asp-validation-for="ProfilePicture" class="text-danger"></span>
+		<button class="btn btn-accent w-100">Upload profile picture</button>
+	</form>
+	<p class="small text-muted mt-3">JPG, PNG or WEBP · Maximum 2MB</p>
+</div>

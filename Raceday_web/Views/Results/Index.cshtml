@@ -1,0 +1,78 @@
+﻿@model List<RaceDay_web.Models.ResultsModel>
+
+@{
+    ViewData["Title"] = "Results";
+
+    string role = Context.Session.GetString("Role") ?? "";
+
+    bool isOrganizer = role.Equals(
+        "Organizer", StringComparison.OrdinalIgnoreCase);
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <span class="eyebrow">RACEDAY</span>
+        <h1 class="fw-bold">Race results</h1>
+    </div>
+
+    @if (isOrganizer)
+    {
+        <a class="btn btn-accent" asp-action="Create">
+            ＋ Enter results
+        </a>
+    }
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <div class="empty-state">
+        <div class="feature-icon">🏆</div>
+        <h4>No race results available</h4>
+        <p>Race results will appear here when organisers enter them.</p>
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Result ID</th>
+                    <th>Finish time</th>
+                    <th>Race position</th>
+                    <th>Average pace</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Result_Id</td>
+                        <td>@item.Finish_Time</td>
+                        <td>@item.Race_Positions</td>
+                        <td>@item.Avg_Pace</td>
+                        <td>
+                            <a asp-action="Details"
+                               asp-route-id="@item.Result_Id"
+                               class="btn btn-sm btn-outline-primary">
+                                View
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
